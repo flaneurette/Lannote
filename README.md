@@ -1,0 +1,2 @@
+# Lannote
+Beautiful note keeper.
