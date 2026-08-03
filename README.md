@@ -34,6 +34,21 @@ sudo chmod -R 0775 /var/www/db
 
 Be sure to protect the auth files with .htaccess, if you want even tighter security:
 
+Create .htaccess in the /data/ folder:
+
+```
+# notes/data/.htaccess
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>
+```
+
+Then:
+
 ```nano /etc/apache2/apache2.conf```
 
 Add: `AllowOverride All`
