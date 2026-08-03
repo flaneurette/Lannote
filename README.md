@@ -17,6 +17,7 @@ A simple notetaker, designed for taking notes, such as on a LAN, and a homeserve
 ## Installation
 
 - Move files to the server.
+- Move /notes/data/ below the /html/ folder.
 
 Make sure a directory called 'db' exists, below your `html` (parent) folder!
 
@@ -61,6 +62,7 @@ Add: `AllowOverride All`
 </Directory>
 ```
 Then:
+
 ```
 sudo systemctl reload apache2
 ```
