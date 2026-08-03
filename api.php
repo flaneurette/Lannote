@@ -52,8 +52,8 @@
  */
 
 session_start();
-require __DIR__ . '/../assets/php/ip.php';
-require __DIR__ . '/../constants.php';
+require __DIR__ . '/assets/php/ip.php';
+require __DIR__ . '/constants.php';
 
 $ip_ok = in_array($_SERVER['REMOTE_ADDR'], $allowed_ips);
 if (!$ip_ok || empty($_SESSION['authed'])) {
@@ -72,7 +72,7 @@ if (!$ip_ok || empty($_SESSION['authed'])) {
 // header('Access-Control-Allow-Methods: GET, POST');
 // header('Access-Control-Allow-Headers: Content-Type');
 
-$dataDir        = '../'. SECURE_PATH . 'notes/data';
+$dataDir        = SECURE_PATH . 'notes/data';
 
 $categoriesFile = $dataDir . '/categories.json';
 $defaultCategories = [
