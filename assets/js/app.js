@@ -43,7 +43,7 @@ themeToggle.addEventListener('click', () => {
 
 async function lanNotate() {
   try {
-    const res = await fetch('notes/api.php?action=loadnotes');
+    const res = await fetch('api.php?action=loadnotes');
     const notes = await res.json();
     allNotes = notes;
     applyCategoryFilter();
@@ -88,7 +88,7 @@ function randomColor() {
 
 async function loadCategoryCloud() {
   try {
-    const res = await fetch('notes/api.php?action=loadcategories');
+    const res = await fetch('api.php?action=loadcategories');
     const categories = await res.json();
     renderCategoryCloud(categories);
   } catch (err) {
@@ -152,7 +152,7 @@ if (isWritePage) {
   // Load categories for the dropdown
   (async function loadCategories() {
     try {
-      const res = await fetch('notes/api.php?action=loadcategories');
+      const res = await fetch('api.php?action=loadcategories');
       const categories = await res.json();
       const previousValue = categoryField.value;
       categories.forEach(cat => {
@@ -169,7 +169,7 @@ if (isWritePage) {
 
   window.editNote = async function editNote(noteId, buttonEl) {
     try {
-      const res = await fetch('notes/api.php?action=loadnote&id=' + encodeURIComponent(noteId));
+      const res = await fetch('api.php?action=loadnote&id=' + encodeURIComponent(noteId));
       const data = await res.json();
       loadNote(data);
       currentNoteId = noteId;
@@ -194,7 +194,7 @@ if (isWritePage) {
 
   async function saveNote(title, note, category) {
     try {
-      const res = await fetch('notes/api.php?action=savenote', {
+      const res = await fetch('api.php?action=savenote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: currentNoteId, title, note, category, csrf: csrfToken })
@@ -215,7 +215,7 @@ if (isWritePage) {
 
   async function deleteNote(id) {
     try {
-      const res = await fetch('notes/api.php?action=deletenote', {
+      const res = await fetch('api.php?action=deletenote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, csrf: csrfToken })
@@ -260,7 +260,7 @@ if (isWritePage) {
 if (isViewPage) {
   window.viewNote = async function viewNote(noteId, buttonEl) {
     try {
-      const res = await fetch('notes/api.php?action=loadnote&id=' + encodeURIComponent(noteId));
+      const res = await fetch('api.php?action=loadnote&id=' + encodeURIComponent(noteId));
       const data = await res.json();
 
       document.querySelectorAll('.note-item').forEach(b => b.classList.remove('active'));
