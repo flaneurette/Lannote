@@ -85,7 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($bytes === false) {
                 die("Could not write config to " . htmlspecialchars($authFile) . ". Check if PHP has write permissions.");
             }
-
+	    unlink("setup.php");
+	    unlink("captcha.php");
             $message = 'Password saved.';
             $existing = ['hash' => $hash];
             header("Location:index.php");
