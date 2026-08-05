@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>L A N N O T E</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<meta name="csrf-token" content="<?= htmlspecialchars(csrf_token()) ?>">
 </head>
 <body>
 <div class="app">
@@ -52,7 +53,7 @@
       <ul id="category-cloud" class="category-cloud"></ul>
     </nav>
 
-    <main class="panel">
+    <main class="panel" id="main-view">
       <div class="panel-inner">
       <ul id="archive-list" class="note-list-archive" style="display:none;"></ul>
         <div id="viewer-empty" class="viewer-empty">Select a note to read</div>
@@ -63,6 +64,33 @@
         </div>
       </div>
     </main>
+    
+    <main class="panel" id="main-write">
+     <a href="write.php"><img src="assets/images/pencil.png" id="pencil" /></a>
+      <div class="panel-inner">
+        <input type="text" id="title" class="title-input" placeholder="Untitled note" />
+
+	<div class="toolbar">
+	  <div class="tabs">
+	    <button id="tab-write" class="tab active">Write</button>
+	    <button id="tab-preview" class="tab">Preview</button>
+	  </div>
+	  <div class="save-delete-group">
+	          <select id="category" class="category-select">
+          <option value="">Uncategorized</option>
+        </select>
+	    <button id="save" class="btn-save">Save note</button>
+	    <button id="delete" class="btn-save btn-delete">Delete</button>
+	  </div>
+	</div>
+
+        <div class="editor-body">
+          <textarea id="note" class="note-field" placeholder="Start writing in markdown…"></textarea>
+          <div id="preview" class="preview-pane"></div>
+        </div>
+      </div>
+    </main>
+    
   </div>
 </div>
 </div>

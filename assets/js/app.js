@@ -162,14 +162,15 @@ async function loadArchive() {
       <span class="note-meta">
         ${n.category ? `<span class="note-category">${escapeHtml(capitalize(n.category))}</span>` : ''}
         <span class="note-date">${formatDate(n.updated)}</span>
-        <span><a href="#" onclick="editNote(${n.link, n.link}); document.getElementById('archive-list').style.display = 'none';">edit</a></span>
-        <span><a href="#" onclick="viewNote(${n.link, n.link}); document.getElementById('archive-list').style.display = 'none';">view</a></span>
+        <span><a href="#" onclick="editNote(${n.link, n.link}); document.getElementById('main-write').style.display = 'block'; document.getElementById('main-view').style.display = 'none';  document.getElementById('archive-list').style.display = 'none';">edit</a></span>
+        <span><a href="#" onclick="viewNote(${n.link, n.link}); document.getElementById('main-view').style.display = 'block'; document.getElementById('archive-list').style.display = 'none';">view</a></span>
       </span>
     `;
     li.appendChild(btn);
     listing.appendChild(li);
   });
   listing.style.display = 'block';
+  document.getElementById('main-view').style.display = 'block'; 
 }
 
 
@@ -193,27 +194,6 @@ if (isWritePage) {
       console.error('Failed to load categories:', err);
     }
   })();
-
-  window.editNote = async function editNote(noteId, buttonEl) {
-    try {
-      const res = await fetch('api.php?action=loadnote&id=' + encodeURIComponent(noteId));
-      const data = await res.json();
-      loadNote(data);
-      currentNoteId = noteId;
-      document.querySelectorAll('.note-item').forEach(b => b.classList.remove('active'));
-      if (buttonEl) buttonEl.classList.add('active');
-    } catch (err) {
-      console.error('Failed to load note:', err);
-    }
-  };
-
-  function loadNote(data) {
-    titleField.value = data.title || '';
-    categoryField.value = data.category || '';
-    noteField.value = data.note || '';
-    renderPreview();
-    showWriteTab();
-  }
 
   saveButton.addEventListener('click', () => {
     saveNote(titleField.value, noteField.value, categoryField.value);
@@ -284,6 +264,27 @@ if (isWritePage) {
   tabPreview.addEventListener('click', showPreviewTab);
 }
 
+  function loadNote(data) {
+    titleField.value = data.title || '';
+    categoryField.value = data.category || '';
+    noteField.value = data.note || '';
+    renderPreview();
+    showWriteTab();
+  }
+  
+  window.editNote = async function editNote(noteId, buttonEl) {
+    try {
+      const res = await fetch('api.php?action=loadnote&id=' + encodeURIComponent(noteId));
+      const data = await res.json();
+      loadNote(data);
+      currentNoteId = noteId;
+      document.querySelectorAll('.note-item').forEach(b => b.classList.remove('active'));
+      if (buttonEl) buttonEl.classList.add('active');
+    } catch (err) {
+      console.error('Failed to load note:', err);
+    }
+  };
+  
 if (isViewPage) {
   window.viewNote = async function viewNote(noteId, buttonEl) {
     try {
