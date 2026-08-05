@@ -689,3 +689,9 @@ ul.category-cloud li {
     width: 100%;
   }
 }
+
+@media screen and (min-width: 1441px) {
+   .layout, .app-header {
+    width: 70%;
+  }
+}
