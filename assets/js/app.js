@@ -146,6 +146,33 @@ function renderNoteList(notes) {
   });
 }
 
+
+async function loadArchive() {
+
+    const res = await fetch('api.php?action=loadnotes');
+    const notes = await res.json();
+    let listing = document.getElementById('archive-list');
+    notes.forEach(n => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.className = 'note-item';
+    btn.dataset.id = n.link;
+    btn.innerHTML = `
+      <span class="note-title">${escapeHtml(n.notename)}</span>
+      <span class="note-meta">
+        ${n.category ? `<span class="note-category">${escapeHtml(capitalize(n.category))}</span>` : ''}
+        <span class="note-date">${formatDate(n.updated)}</span>
+        <span><a href="#" onclick="editNote(${n.link, n.link}); document.getElementById('archive-list').style.display = 'none';">edit</a></span>
+        <span><a href="#" onclick="viewNote(${n.link, n.link}); document.getElementById('archive-list').style.display = 'none';">view</a></span>
+      </span>
+    `;
+    li.appendChild(btn);
+    listing.appendChild(li);
+  });
+  listing.style.display = 'block';
+}
+
+
 if (isWritePage) {
   const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 

@@ -35,8 +35,8 @@
     <h1 class="brand">L·ANNOTE</h1>
     <div class="header-links">
       <a href="write.php">Write</a>
-      <a href="index.php" class="current">View</a>
-      <a href="archive.php">Archive</a>
+      <a href="index.php">View</a>
+      <a href="archive.php" class="current">Archive</a>
       <a href="#" onclick="showSettings();">Mod</a>
       <a href="#" onclick="window.print(); return false;">Print</a>
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
@@ -54,6 +54,7 @@
 
     <main class="panel">
       <div class="panel-inner">
+      <ul id="archive-list" class="note-list-archive" style="display:none;"></ul>
         <div id="viewer-empty" class="viewer-empty">Select a note to read</div>
         <div id="viewer-body" style="display:none;">
           <div id="viewer-title" class="viewer-title"></div>
@@ -67,5 +68,6 @@
 </div>
 <script src="assets/js/markup.js"></script>
 <script src="assets/js/app.js"></script>
+<script>loadArchive();</script>
 </body>
 </html>

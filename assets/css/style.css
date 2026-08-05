@@ -197,6 +197,16 @@ body {
   overflow: auto;
 }
 
+.note-list-archive {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.note-list-archive li {
+  display: inline-block;
+}
+
 .note-item {
   display: block;
   width: 100%;

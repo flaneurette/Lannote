@@ -37,6 +37,7 @@ require("assets/php/config.php");
     <div class="header-links">
       <a href="write.php" class="current">Write</a>
       <a href="index.php">View</a>
+      <a href="archive.php">Archive</a>
       <a href="#" onclick="showSettings();">Mod</a>
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
       <a href="index.php?logout=1" title="Log out">⏻</a> 
