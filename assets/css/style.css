@@ -213,12 +213,9 @@ body {
 }
 
 .note-item:hover {
-  border-left-color: var(--accent);
-  transform: translateX(2px);
 }
 
 .note-item.active {
-  border-left-color: var(--accent-red);
   background: var(--accent-soft);
 }
 
