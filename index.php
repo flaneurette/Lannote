@@ -44,7 +44,6 @@
     </div>
   </header>
   <div class="layout">
-<a href="write.php"><img src="assets/images/pencil.png" id="pencil" /></a>
     <nav class="sidebar">
       <div class="sidebar-label">Notes</div>
       <ul id="note-list" class="note-list"></ul>
@@ -52,7 +51,7 @@
       <ul id="category-cloud" class="category-cloud"></ul>
     </nav>
 
-    <main class="panel">
+    <main class="panel"><a href="#" onclick="editNote();"><img src="assets/images/pencil.png" id="pencil" /></a>
       <div class="panel-inner">
         <div id="viewer-empty" class="viewer-empty">Select a note to read</div>
         <div id="viewer-body" style="display:none;">
